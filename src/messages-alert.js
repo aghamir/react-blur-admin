@@ -1,41 +1,43 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 export class MessagesAlert extends React.Component {
 
-  static propTypes = {
-    user: React.PropTypes.object,
-    subject: React.PropTypes.string,
-    createdAt: React.PropTypes.string,
-    onClick: React.PropTypes.func,
-    relativeTime: React.PropTypes.string,
-    timestamp: React.PropTypes.string,
-  }
-
-  onClick() {
-    if (this.props.onClick) {
-      this.props.onClick();
+    static propTypes = {
+        user: PropTypes.object,
+        subject: PropTypes.string,
+        createdAt: PropTypes.string,
+        onClick: PropTypes.func,
+        relativeTime: PropTypes.string,
+        timestamp: PropTypes.string,
     }
-  }
 
-  renderBody() {
-    return (
-      <div onClick={this.onClick.bind(this)} className='clearfix'>
-        <div className='img-area'>
-          <img src={this.props.user.picture} className='photo-msg-item'/>
-        </div>
-        <div className='msg-area'>
-          <div>{this.props.subject}</div>
-          <span title={this.props.timestamp}>{this.props.relativeTime}</span>
-        </div>
-      </div>
-    );
-  }
+    onClick() {
+        if (this.props.onClick) {
+            this.props.onClick();
+        }
+    }
 
-  render() {
-    return (
-      <div>
-        {this.renderBody()}
-      </div>
-    );
-  }
+    renderBody() {
+        return (
+            <div onClick={this.onClick.bind(this)} className='clearfix'>
+                <div className='img-area'>
+                    <img src={this.props.user.picture} className='photo-msg-item'/>
+                </div>
+                <div className='msg-area'>
+                    <div>{this.props.subject}</div>
+                    <span title={this.props.timestamp}>{this.props.relativeTime}</span>
+                </div>
+            </div>
+        );
+    }
+
+    render() {
+        return (
+            <div>
+                {this.renderBody()}
+            </div>
+        );
+    }
 }

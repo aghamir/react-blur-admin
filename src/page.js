@@ -1,48 +1,50 @@
 import React from 'react';
-import { Row, Col } from 'react-flex-proto';
+import {Row, Col} from 'react-flexbox-grid';
+import PropTypes from 'prop-types';
+
 
 export class Page extends React.Component {
 
-  static propTypes = {
-    title: React.PropTypes.string,
-    actionBar: React.PropTypes.node,
-  }
-
-  renderTitle() {
-    if (! this.props.title) {
-      return null;
+    static propTypes = {
+        title: PropTypes.string,
+        actionBar: PropTypes.node,
     }
 
-    return (
-      <Col padding={0}>
-        <h1 className='al-title'>{this.props.title}</h1>
-      </Col>
-    );
-  }
+    renderTitle() {
+        if (!this.props.title) {
+            return null;
+        }
 
-  renderActionBar() {
-    if (! this.props.actionBar) {
-      return null;
+        return (
+            <Col padding={0}>
+                <h1 className='al-title'>{this.props.title}</h1>
+            </Col>
+        );
     }
 
-    return (
-      <Col align='right'>
-        {this.props.actionBar}
-      </Col>
-    );
-  }
+    renderActionBar() {
+        if (!this.props.actionBar) {
+            return null;
+        }
 
-  render() {
-    return (
-      <div>
-        <div className="content-top clearfix">
-          <Row>
-            {this.renderTitle()}
-            {this.renderActionBar()}
-          </Row>
-        </div>
-        {this.props.children}
-      </div>
-    );
-  }
+        return (
+            <Col align='right'>
+                {this.props.actionBar}
+            </Col>
+        );
+    }
+
+    render() {
+        return (
+            <div>
+                <div className="content-top clearfix">
+                    <Row>
+                        {this.renderTitle()}
+                        {this.renderActionBar()}
+                    </Row>
+                </div>
+                {this.props.children}
+            </div>
+        );
+    }
 }
